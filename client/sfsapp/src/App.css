@@ -1,0 +1,547 @@
+/* ============================================================
+   STUDENT MANAGEMENT SYSTEM — Professional UI
+   Design: Clean dark navbar, crisp white surfaces, teal accent
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+/* ---------- CSS VARIABLES ---------- */
+:root {
+  --accent:       #0ea5e9;
+  --accent-dark:  #0284c7;
+  --accent-glow:  rgba(14, 165, 233, 0.18);
+  --danger:       #f43f5e;
+  --danger-dark:  #e11d48;
+  --success:      #10b981;
+  --nav-bg:       #0f172a;
+  --nav-text:     #e2e8f0;
+  --body-bg:      #f1f5f9;
+  --surface:      #ffffff;
+  --surface-alt:  #f8fafc;
+  --border:       #e2e8f0;
+  --text-main:    #1e293b;
+  --text-muted:   #64748b;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:    0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg:    0 12px 40px rgba(0,0,0,.14);
+  --radius:       12px;
+  --radius-sm:    8px;
+  --radius-pill:  999px;
+  --transition:   0.22s cubic-bezier(.4,0,.2,1);
+  --font:         'Plus Jakarta Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+/* ---------- RESET & BASE ---------- */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--body-bg);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.sms-navbar {
+  background: var(--nav-bg);
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 2px 16px rgba(0,0,0,.25);
+}
+
+.sms-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+
+.sms-nav-brand::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.sms-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sms-nav-links a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  transition: background var(--transition), color var(--transition);
+  letter-spacing: 0.2px;
+}
+
+.sms-nav-links a:hover {
+  background: rgba(255,255,255,.09);
+  color: #fff;
+}
+
+.sms-nav-links a.active,
+.sms-nav-links a[aria-current="page"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Hamburger — mobile only */
+.sms-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-direction: column;
+  gap: 5px;
+}
+.sms-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all var(--transition);
+}
+
+/* ============================================================
+   PAGE WRAPPER
+   ============================================================ */
+.sms-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 16px 64px;
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+.sms-card {
+  background: var(--surface);
+  width: 100%;
+  max-width: 460px;
+  padding: 40px 36px 36px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  animation: slideUp .45s cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.sms-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.sms-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.sms-card h1 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   FORM ELEMENTS
+   ============================================================ */
+.sms-field {
+  margin-bottom: 18px;
+}
+
+.sms-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.sms-card input[type="text"],
+.sms-card input[type="number"],
+.sms-card input[type="file"] {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  font-family: var(--font);
+  color: var(--text-main);
+  background: var(--surface-alt);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.sms-card input[type="text"]:focus,
+.sms-card input[type="number"]:focus,
+.sms-card input[type="file"]:focus {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Styled file input wrapper */
+.sms-file-wrapper {
+  position: relative;
+}
+
+.sms-card input[type="file"] {
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.sms-card input[type="file"]::file-selector-button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background var(--transition);
+}
+
+.sms-card input[type="file"]::file-selector-button:hover {
+  background: var(--accent-dark);
+}
+
+/* Submit button */
+.sms-card input[type="submit"],
+.sms-btn-primary {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  padding: 13px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font);
+  cursor: pointer;
+  margin-top: 8px;
+  letter-spacing: 0.2px;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.sms-card input[type="submit"]:hover,
+.sms-btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(14,165,233,.35);
+}
+
+.sms-card input[type="submit"]:active,
+.sms-btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Status messages */
+.sms-msg {
+  margin-top: 18px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  animation: fadeIn .3s ease;
+}
+
+.sms-msg.success {
+  background: rgba(16,185,129,.1);
+  color: #059669;
+  border: 1px solid rgba(16,185,129,.25);
+}
+
+.sms-msg.error {
+  background: rgba(244,63,94,.08);
+  color: var(--danger);
+  border: 1px solid rgba(244,63,94,.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   HOME PAGE
+   ============================================================ */
+.sms-home {
+  padding: 40px 24px 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: slideUp .45s cubic-bezier(.4,0,.2,1) both;
+}
+
+.sms-home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sms-home-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.6px;
+}
+
+.sms-home-header .sms-count-badge {
+  background: var(--accent-glow);
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+/* Table container */
+.sms-table-wrap {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--nav-bg);
+}
+
+th {
+  padding: 15px 18px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+td {
+  padding: 14px 18px;
+  text-align: left;
+  color: var(--text-main);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr {
+  transition: background var(--transition);
+}
+tbody tr:hover { background: #f0f9ff; }
+
+/* Roll number styled as badge */
+.sms-rno {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-dark);
+  background: var(--accent-glow);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+}
+
+/* Marks bar */
+.sms-marks-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sms-marks-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.sms-marks-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), #38bdf8);
+  transition: width .6s ease;
+}
+
+/* Student image */
+.timg {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border);
+  display: block;
+}
+
+/* Action buttons */
+.sms-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sms-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+
+.sms-btn:hover { transform: translateY(-1px); }
+.sms-btn:active { transform: translateY(0); }
+
+.sms-btn-danger {
+  background: rgba(244,63,94,.1);
+  color: var(--danger);
+}
+.sms-btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(244,63,94,.3);
+}
+
+.sms-btn-success {
+  background: rgba(16,185,129,.1);
+  color: var(--success);
+}
+.sms-btn-success:hover {
+  background: var(--success);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(16,185,129,.3);
+}
+
+.sms-btn-edit {
+  background: rgba(14,165,233,.1);
+  color: var(--accent-dark);
+}
+.sms-btn-edit:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(14,165,233,.3);
+}
+
+/* Empty state */
+.sms-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+.sms-empty-icon { font-size: 48px; margin-bottom: 12px; }
+.sms-empty p { font-size: 15px; font-weight: 500; }
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .sms-navbar { padding: 0 20px; }
+
+  .sms-nav-links { display: none; flex-direction: column; gap: 4px; }
+  .sms-nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 64px; left: 0; right: 0;
+    background: var(--nav-bg);
+    padding: 12px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  }
+  .sms-nav-links.open a {
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+  }
+  .sms-menu-toggle { display: flex; }
+
+  .sms-page { padding: 24px 12px 48px; }
+
+  .sms-card { padding: 28px 20px 24px; }
+
+  .sms-home { padding: 24px 12px 48px; }
+
+  .sms-home-header h1 { font-size: 22px; }
+
+  th, td { padding: 12px 12px; }
+
+  .sms-btn { padding: 7px 10px; font-size: 12px; }
+
+  .timg { width: 40px; height: 40px; }
+
+  /* Stack action buttons vertically on very small screens */
+  @media (max-width: 480px) {
+    .sms-actions { flex-direction: column; gap: 6px; }
+  }
+}
